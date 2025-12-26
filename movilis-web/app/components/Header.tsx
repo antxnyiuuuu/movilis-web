@@ -35,19 +35,34 @@ const nosotrosSubmenu = [
 ];
 
 const campusVirtualSubmenu = [
-  { name: "Accede a tus clases", href: "/campus-virtual/clases" },
+  {
+    name: "Accede a tus clases",
+    hasSubmenu: true,
+    submenu: [
+      {
+        name: "🎓 Plataforma Movilis (Moodle)",
+        href: "https://virtual.movilis.edu.ec/local/customlogin/index.php"
+      },
+      {
+        name: "🇬🇧 Plataforma de Inglés",
+        href: "https://learn.elltechnologies.com/login"
+      }
+    ]
+  },
   {
     name: "Tu información académica",
-    href: "/campus-virtual/informacion-academica",
+    href: "https://movilis.academicok.com/login?next=/",
   },
-  { name: "E-mail de estudiante", href: "/campus-virtual/email-estudiante" },
+  {
+    name: "E-mail de estudiante",
+    href: "https://outlook.office365.com/mail/"
+  },
   { name: "Admisiones", href: "/admisiones" },
 ];
 
 const serviciosSubmenu = [
   { name: "Vinculación con la sociedad", href: "/vinculacion" },
   { name: "Educación continua", href: "/educacion-continua" },
-  { name: "Admisiones", href: "/admisiones" },
 ];
 
 const menuItems = [
@@ -57,17 +72,17 @@ const menuItems = [
     hasDropdown: true,
     submenu: ofertaAcademicaSubmenu,
   },
-  {
-    name: "Servicios",
-    href: "/servicios",
-    hasDropdown: true,
-    submenu: serviciosSubmenu,
-  },
+
   {
     name: "Nosotros",
     href: "/nosotros",
     hasDropdown: true,
     submenu: nosotrosSubmenu,
+  },
+  {
+    name: "Educación Continua",
+    href: "/educacion-continua",
+    hasDropdown: false,
   },
   {
     name: "Campus Virtual",
@@ -159,12 +174,14 @@ export default function Header() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 w-full bg-white transition-shadow duration-300 ${
-          isScrolled ? "shadow-lg" : "shadow-sm"
-        }`}
+        className={`sticky top-0 z-50 w-full bg-white transition-all duration-300 ${isScrolled ? "shadow-lg" : "shadow-sm"
+          }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between lg:h-24">
+          <div
+            className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-16 lg:h-18" : "h-20 lg:h-24"
+              }`}
+          >
             {/* Logo */}
             <div className="flex items-center shrink-0">
               <Link
@@ -172,11 +189,16 @@ export default function Header() {
                 className="flex items-center transition-opacity duration-200 hover:opacity-80 active:opacity-70"
               >
                 <Image
-                  src="/images/Logo-Horizontal-Movilis.png"
+                  src={
+                    isScrolled
+                      ? "/images/Logo-Movilis-sin-Texto.png"
+                      : "/images/Logo-Horizontal-Movilis.png"
+                  }
                   alt="Instituto Movilis"
                   width={200}
                   height={60}
-                  className="h-10 w-auto sm:h-12 lg:h-14 object-contain"
+                  className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-8 sm:h-10 lg:h-12" : "h-10 sm:h-12 lg:h-14"
+                    }`}
                   priority
                 />
               </Link>
@@ -186,11 +208,10 @@ export default function Header() {
             <nav className="hidden lg:flex lg:items-center lg:gap-6 xl:gap-8 flex-1 justify-end">
               {/* Menú items - se ocultan cuando está abierto el buscador */}
               <div
-                className={`flex items-center gap-6 xl:gap-8 transition-all duration-300 ${
-                  isSearchOpen
-                    ? "opacity-0 translate-x-4 pointer-events-none w-0 overflow-hidden"
-                    : "opacity-100 translate-x-0 pointer-events-auto"
-                }`}
+                className={`flex items-center gap-6 xl:gap-8 transition-all duration-300 ${isSearchOpen
+                  ? "opacity-0 translate-x-4 pointer-events-none w-0 overflow-hidden"
+                  : "opacity-100 translate-x-0 pointer-events-auto"
+                  }`}
               >
                 {menuItems.map((item) => {
                   const isCampusVirtual = item.name === "Campus Virtual";
@@ -201,7 +222,8 @@ export default function Header() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="group relative px-2 py-2 text-sm font-light text-gray-700 transition-colors duration-300 hover:text-[#881E80]"
+                        className={`group relative px-2 py-2 font-light text-gray-700 transition-all duration-300 hover:text-[#881E80] ${isScrolled ? "text-sm" : "text-base"
+                          }`}
                       >
                         {item.name}
                         <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#881E80] transition-all duration-300 group-hover:w-full" />
@@ -213,9 +235,8 @@ export default function Header() {
                   return (
                     <div
                       key={item.name}
-                      className={`relative group ${
-                        isCampusVirtual ? "px-1" : ""
-                      }`}
+                      className={`relative group ${isCampusVirtual ? "px-1" : ""
+                        }`}
                       onMouseEnter={() => handleDropdownEnter(item.name)}
                       onMouseLeave={handleDropdownLeave}
                       onFocus={() => handleDropdownEnter(item.name)}
@@ -230,19 +251,18 @@ export default function Header() {
                       tabIndex={0}
                     >
                       <div
-                        className={`flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-300 ${
-                          isCampusVirtual
-                            ? "bg-gradient-to-r from-[#F9EB1D]/20 to-[#881E80]/10 group-hover:from-[#F9EB1D]/30 group-hover:to-[#881E80]/20"
-                            : ""
-                        }`}
+                        className={`flex items-center gap-1.5 px-3 py-2 rounded-lg transition-all duration-300 ${isCampusVirtual
+                          ? "bg-gradient-to-r from-[#F9EB1D]/20 to-[#881E80]/10 group-hover:from-[#F9EB1D]/30 group-hover:to-[#881E80]/20"
+                          : ""
+                          }`}
                       >
                         <Link
                           href={item.href}
-                          className={`text-sm transition-all duration-300 ${
-                            isCampusVirtual
+                          className={`transition-all duration-300 ${isScrolled ? "text-sm" : "text-base"
+                            } ${isCampusVirtual
                               ? "font-semibold text-[#881E80] group-hover:text-[#881E80]"
                               : "font-light text-gray-700 group-hover:text-[#881E80]"
-                          }`}
+                            }`}
                         >
                           {item.name}
                           {isCampusVirtual && (
@@ -252,11 +272,10 @@ export default function Header() {
                           )}
                         </Link>
                         <svg
-                          className={`h-4 w-4 transition-all duration-300 ${
-                            isCampusVirtual
-                              ? "text-[#881E80]"
-                              : "text-gray-700 group-hover:text-[#881E80]"
-                          } ${openDropdown === item.name ? "rotate-180" : ""}`}
+                          className={`h-4 w-4 transition-all duration-300 ${isCampusVirtual
+                            ? "text-[#881E80]"
+                            : "text-gray-700 group-hover:text-[#881E80]"
+                            } ${openDropdown === item.name ? "rotate-180" : ""}`}
                           fill="none"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -268,37 +287,114 @@ export default function Header() {
                         </svg>
                       </div>
                       <span
-                        className={`absolute bottom-0 left-0 transition-all duration-300 ${
-                          isCampusVirtual
-                            ? "h-[3px] w-full bg-[#881E80]"
-                            : "h-[2px] w-0 bg-[#881E80] group-hover:w-full"
-                        }`}
+                        className={`absolute bottom-0 left-0 transition-all duration-300 ${isCampusVirtual
+                          ? "h-[3px] w-full bg-[#881E80]"
+                          : "h-[2px] w-0 bg-[#881E80] group-hover:w-full"
+                          }`}
                       />
 
                       {/* Dropdown */}
                       <div
-                        className={`absolute left-0 top-full w-72 rounded-lg bg-white shadow-lg transition-all duration-200 ${
-                          isCampusVirtual
-                            ? "border-t-4 border-[#F9EB1D] shadow-xl"
-                            : "border-t-2 border-[#881E80]"
-                        } ${
-                          openDropdown === item.name
+                        className={`absolute left-0 top-full w-72 rounded-lg bg-white shadow-lg transition-all duration-200 ${isCampusVirtual
+                          ? "border-t-4 border-[#F9EB1D] shadow-xl"
+                          : "border-t-2 border-[#881E80]"
+                          } ${openDropdown === item.name
                             ? "opacity-100 translate-y-0 pointer-events-auto"
                             : "opacity-0 -translate-y-2 pointer-events-none"
-                        }`}
+                          }`}
                         onMouseEnter={() => handleDropdownEnter(item.name)}
                         onMouseLeave={handleDropdownLeave}
                       >
                         <div className="py-2">
-                          {item.submenu.map((subItem) => (
-                            <Link
-                              key={subItem.name}
-                              href={subItem.href}
-                              className="block px-4 py-3 text-sm font-light text-gray-700 transition-all duration-200 hover:bg-[#881E80] hover:text-white active:bg-[#881E80] active:text-white"
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
+                          {item.submenu.map((subItem: any) => {
+                            // Si el subItem tiene su propio submenu (anidado)
+                            if (subItem.hasSubmenu && subItem.submenu) {
+                              return (
+                                <div
+                                  key={subItem.name}
+                                  className="relative group/nested"
+                                >
+                                  <div className="flex items-center justify-between px-4 py-3 text-sm font-light text-gray-700 transition-all duration-200 hover:bg-[#881E80] hover:text-white cursor-pointer">
+                                    <span>{subItem.name}</span>
+                                    <svg
+                                      className="h-4 w-4 rotate-90"
+                                      fill="none"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                  </div>
+                                  {/* Submenú anidado */}
+                                  <div className="absolute right-full top-0 mr-1 w-64 rounded-lg bg-white shadow-lg border-t-2 border-[#881E80] opacity-0 translate-x-2 pointer-events-none group-hover/nested:opacity-100 group-hover/nested:translate-x-0 group-hover/nested:pointer-events-auto transition-all duration-200">
+                                    <div className="py-2">
+                                      {subItem.submenu.map((nestedItem: any) => {
+                                        const isExternal = nestedItem.href?.startsWith('http');
+                                        return (
+                                          <Link
+                                            key={nestedItem.name}
+                                            href={nestedItem.href}
+                                            {...(isExternal && {
+                                              target: "_blank",
+                                              rel: "noopener noreferrer"
+                                            })}
+                                            className="block px-4 py-3 text-sm font-light text-gray-700 transition-all duration-200 hover:bg-[#881E80] hover:text-white active:bg-[#881E80] active:text-white"
+                                          >
+                                            {nestedItem.name}
+                                            {isExternal && (
+                                              <svg
+                                                className="inline-block ml-1 h-3 w-3"
+                                                fill="none"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                viewBox="0 0 24 24"
+                                                stroke="currentColor"
+                                              >
+                                                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                              </svg>
+                                            )}
+                                          </Link>
+                                        );
+                                      })}
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            }
+
+                            // Si es un item normal con href
+                            const isExternal = subItem.href?.startsWith('http');
+                            return (
+                              <Link
+                                key={subItem.name}
+                                href={subItem.href || '#'}
+                                {...(isExternal && {
+                                  target: "_blank",
+                                  rel: "noopener noreferrer"
+                                })}
+                                className="block px-4 py-3 text-sm font-light text-gray-700 transition-all duration-200 hover:bg-[#881E80] hover:text-white active:bg-[#881E80] active:text-white"
+                              >
+                                {subItem.name}
+                                {isExternal && (
+                                  <svg
+                                    className="inline-block ml-1 h-3 w-3"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                  >
+                                    <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                  </svg>
+                                )}
+                              </Link>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -308,11 +404,10 @@ export default function Header() {
 
               {/* Cuadro de búsqueda - se muestra cuando está abierto */}
               <div
-                className={`flex items-center gap-3 transition-all duration-300 ${
-                  isSearchOpen
-                    ? "opacity-100 translate-x-0 w-full max-w-md"
-                    : "opacity-0 translate-x-4 w-0 overflow-hidden pointer-events-none"
-                }`}
+                className={`flex items-center gap-3 transition-all duration-300 ${isSearchOpen
+                  ? "opacity-100 translate-x-0 w-full max-w-md"
+                  : "opacity-0 translate-x-4 w-0 overflow-hidden pointer-events-none"
+                  }`}
               >
                 <div className="relative w-full flex items-center">
                   <div className="absolute left-4 text-gray-400">
@@ -386,19 +481,16 @@ export default function Header() {
               aria-expanded={isMenuOpen}
             >
               <span
-                className={`h-0.5 w-6 bg-gray-800 transition-all duration-300 ${
-                  isMenuOpen ? "translate-y-2 rotate-45" : ""
-                }`}
+                className={`h-0.5 w-6 bg-gray-800 transition-all duration-300 ${isMenuOpen ? "translate-y-2 rotate-45" : ""
+                  }`}
               />
               <span
-                className={`h-0.5 w-6 bg-gray-800 transition-all duration-300 ${
-                  isMenuOpen ? "opacity-0" : ""
-                }`}
+                className={`h-0.5 w-6 bg-gray-800 transition-all duration-300 ${isMenuOpen ? "opacity-0" : ""
+                  }`}
               />
               <span
-                className={`h-0.5 w-6 bg-gray-800 transition-all duration-300 ${
-                  isMenuOpen ? "-translate-y-2 -rotate-45" : ""
-                }`}
+                className={`h-0.5 w-6 bg-gray-800 transition-all duration-300 ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""
+                  }`}
               />
             </button>
           </div>
@@ -422,9 +514,8 @@ export default function Header() {
 
       {/* Drawer/Menú Lateral - Móvil */}
       <div
-        className={`fixed right-0 top-0 z-50 h-full w-[85vw] min-w-[280px] max-w-[320px] transform bg-white shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed right-0 top-0 z-50 h-full w-[85vw] min-w-[280px] max-w-[320px] transform bg-white shadow-2xl transition-transform duration-300 ease-in-out lg:hidden ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="flex h-16 items-center justify-between border-b border-gray-200 px-4 sm:px-6">
           <span className="text-lg sm:text-xl font-bold text-[#881E80]">
@@ -450,11 +541,10 @@ export default function Header() {
         </div>
 
         <nav
-          className={`flex flex-col py-2 overflow-y-auto max-h-[calc(100vh-4rem)] overscroll-contain transition-all duration-300 ${
-            isSearchOpen
-              ? "opacity-0 translate-y-4 pointer-events-none"
-              : "opacity-100 translate-y-0"
-          }`}
+          className={`flex flex-col py-2 overflow-y-auto max-h-[calc(100vh-4rem)] overscroll-contain transition-all duration-300 ${isSearchOpen
+            ? "opacity-0 translate-y-4 pointer-events-none"
+            : "opacity-100 translate-y-0"
+            }`}
         >
           {menuItems.map((item) => {
             if (item.hasDropdown && item.submenu) {
@@ -464,11 +554,10 @@ export default function Header() {
               return (
                 <div
                   key={item.name}
-                  className={`border-b border-gray-100 ${
-                    isCampusVirtual
-                      ? "bg-gradient-to-r from-[#F9EB1D]/15 to-transparent"
-                      : ""
-                  }`}
+                  className={`border-b border-gray-100 ${isCampusVirtual
+                    ? "bg-gradient-to-r from-[#F9EB1D]/15 to-transparent"
+                    : ""
+                    }`}
                 >
                   <button
                     onClick={() => toggleMobileAccordion(item.name)}
@@ -478,33 +567,24 @@ export default function Header() {
                         toggleMobileAccordion(item.name);
                       }
                     }}
-                    className={`w-full flex items-center justify-between px-4 sm:px-6 py-4 min-h-[56px] text-base transition-all duration-200 touch-manipulation ${
-                      isCampusVirtual
-                        ? "font-semibold text-[#881E80] hover:bg-[#F9EB1D]/20 active:bg-[#F9EB1D]/30"
-                        : "font-light text-gray-700 hover:bg-[#881E80]/10 hover:text-[#881E80] active:bg-[#881E80]/20"
-                    }`}
+                    className={`w-full flex items-center justify-between px-4 sm:px-6 py-4 min-h-[56px] text-base transition-all duration-200 touch-manipulation ${isCampusVirtual
+                      ? "font-semibold text-[#881E80] hover:bg-[#F9EB1D]/20 active:bg-[#F9EB1D]/30"
+                      : "font-light text-gray-700 hover:bg-[#881E80]/10 hover:text-[#881E80] active:bg-[#881E80]/20"
+                      }`}
                     aria-expanded={isAccordionOpen}
                     aria-controls={`submenu-${item.name}`}
                   >
-                    <Link
-                      href={item.href}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        closeMenu();
-                      }}
-                      className="flex-1 text-left pr-2 flex items-center gap-2"
-                    >
+                    <span className="flex-1 text-left pr-2 flex items-center gap-2">
                       {item.name}
                       {isCampusVirtual && (
                         <span className="text-xs bg-[#881E80] text-white px-2 py-0.5 rounded-full font-medium">
                           POPULAR 🔥
                         </span>
                       )}
-                    </Link>
+                    </span>
                     <svg
-                      className={`h-5 w-5 text-gray-600 transition-transform duration-300 ${
-                        isAccordionOpen ? "rotate-180" : ""
-                      }`}
+                      className={`h-5 w-5 text-gray-600 transition-transform duration-300 ${isAccordionOpen ? "rotate-180" : ""
+                        }`}
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -519,23 +599,84 @@ export default function Header() {
                   {/* Submenú Acordeón */}
                   <div
                     id={`submenu-${item.name}`}
-                    className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                      isAccordionOpen
-                        ? "max-h-[400px] opacity-100"
-                        : "max-h-0 opacity-0"
-                    }`}
+                    className={`overflow-hidden transition-all duration-300 ease-in-out ${isAccordionOpen
+                      ? "max-h-[400px] opacity-100"
+                      : "max-h-0 opacity-0"
+                      }`}
                   >
                     <div className="bg-gray-50/50">
-                      {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          onClick={closeMenu}
-                          className="flex items-center px-4 sm:px-6 py-3.5 pl-10 sm:pl-12 min-h-[48px] text-sm sm:text-base font-light text-gray-600 transition-all duration-200 hover:bg-[#881E80]/10 hover:text-[#881E80] active:bg-[#881E80]/20 touch-manipulation"
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
+                      {item.submenu.map((subItem: any) => {
+                        // Si el subItem tiene su propio submenu (anidado)
+                        if (subItem.hasSubmenu && subItem.submenu) {
+                          return (
+                            <div key={subItem.name} className="border-b border-gray-200/50 last:border-b-0">
+                              <div className="px-4 sm:px-6 py-2.5 pl-10 sm:pl-12 text-sm sm:text-base font-medium text-[#881E80] bg-gray-100/50">
+                                {subItem.name}
+                              </div>
+                              {subItem.submenu.map((nestedItem: any) => {
+                                const isExternal = nestedItem.href?.startsWith('http');
+                                return (
+                                  <Link
+                                    key={nestedItem.name}
+                                    href={nestedItem.href}
+                                    onClick={closeMenu}
+                                    {...(isExternal && {
+                                      target: "_blank",
+                                      rel: "noopener noreferrer"
+                                    })}
+                                    className="flex items-center px-4 sm:px-6 py-3 pl-14 sm:pl-16 min-h-[48px] text-sm sm:text-base font-light text-gray-600 transition-all duration-200 hover:bg-[#881E80]/10 hover:text-[#881E80] active:bg-[#881E80]/20 touch-manipulation"
+                                  >
+                                    {nestedItem.name}
+                                    {isExternal && (
+                                      <svg
+                                        className="inline-block ml-1 h-3 w-3"
+                                        fill="none"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                      >
+                                        <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                      </svg>
+                                    )}
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          );
+                        }
+
+                        // Si es un item normal con href
+                        const isExternal = subItem.href?.startsWith('http');
+                        return (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href || '#'}
+                            onClick={closeMenu}
+                            {...(isExternal && {
+                              target: "_blank",
+                              rel: "noopener noreferrer"
+                            })}
+                            className="flex items-center px-4 sm:px-6 py-3.5 pl-10 sm:pl-12 min-h-[48px] text-sm sm:text-base font-light text-gray-600 transition-all duration-200 hover:bg-[#881E80]/10 hover:text-[#881E80] active:bg-[#881E80]/20 touch-manipulation"
+                          >
+                            {subItem.name}
+                            {isExternal && (
+                              <svg
+                                className="inline-block ml-1 h-3 w-3"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            )}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

@@ -18,9 +18,47 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-2px) rotate(-5deg);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(2px) rotate(5deg);
+  }
+}
+
+@keyframes pulseScale {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
   }
 }
 
@@ -34,4 +72,35 @@ body {
 .touch-manipulation {
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(136, 30, 128, 0.15);
+}
+
+.animate-shake {
+  animation: shake 3s ease-in-out infinite;
+}
+
+.animate-pulse-scale {
+  animation: pulseScale 1.5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Ocultar el indicador de desarrollo de Next.js */
+#__next-build-watcher,
+#__next-build-indicator {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ocultar el portal de Next.js */
+nextjs-portal {
+  display: none !important;
+}
+
+/* Ocultar el indicador con z-index alto en la esquina */
+div[style*="z-index: 99999"],
+div[style*="z-index: 9999"] {
+  display: none !important;
 }
