@@ -114,7 +114,7 @@ export default function LogisticaTransporteRegularPage() {
             </section>
 
             {/* SECCIÓN 2: Campo Laboral */}
-            <section className="py-16 md:py-20 bg-gray-50">
+            <section className="pt-16 md:pt-20 pb-4 md:pb-6 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
@@ -146,7 +146,7 @@ export default function LogisticaTransporteRegularPage() {
             </section>
 
             {/* SECCIÓN 3: Malla Curricular */}
-            <section className="py-20 md:py-28 bg-white">
+            <section className="pt-4 md:pt-6 pb-4 md:pb-6 bg-white">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -251,7 +251,7 @@ export default function LogisticaTransporteRegularPage() {
             </section>
 
             {/* SECCIÓN 4: Información Académica y Requisitos */}
-            <section className="py-20 md:py-28 bg-gray-50">
+            <section className="pt-4 md:pt-6 pb-4 md:pb-6 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-6 md:px-12">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
                         {/* Columna Izquierda: Requisitos */}
@@ -350,7 +350,7 @@ export default function LogisticaTransporteRegularPage() {
             </section>
 
             {/* SECCIÓN 5: Inversión y Matrícula */}
-            <section className="py-20 md:py-28 bg-white">
+            <section className="pt-4 md:pt-6 pb-20 md:pb-28 bg-white">
                 <div className="max-w-4xl mx-auto px-6 md:px-12">
                     <motion.div
                         initial={{ opacity: 0, y: 40 }}
@@ -404,26 +404,26 @@ export default function LogisticaTransporteRegularPage() {
             </section>
 
             {/* SECCIÓN 6: Barra de Acción Final */}
-            <section className="sticky bottom-0 bg-white border-t border-gray-200 shadow-2xl z-50">
-                <div className="max-w-7xl mx-auto px-6 py-4">
-                    <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <section className="sticky bottom-0 bg-transparent border-t border-transparent shadow-2xl z-50 pointer-events-none">
+                <div className="max-w-7xl mx-auto px-6 py-4 flex justify-center">
+                    <div className="flex flex-col md:flex-row gap-3 items-center justify-center md:justify-between w-full pointer-events-auto">
                         {/* Enlace Secundario */}
-                        <Link href="#" className="w-full md:w-auto">
-                            <button className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-full font-semibold hover:border-[#881E80] hover:text-[#881E80] transition-all duration-300">
-                                <Calendar className="w-5 h-5" />
-                                Ver Calendario Académico
+                        <Link href="#" className="w-auto">
+                            <button className="inline-flex bg-white items-center justify-center gap-2 px-5 py-2.5 border-2 border-gray-300 text-gray-700 rounded-full font-semibold text-sm hover:border-[#881E80] hover:text-[#881E80] transition-all duration-300 shadow-md">
+                                <Calendar className="w-4 h-4" />
+                                Calendario Académico
                             </button>
                         </Link>
 
                         {/* Botón Principal */}
-                        <a href="#" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto">
+                        <a href="#" target="_blank" rel="noopener noreferrer" className="w-auto">
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-[#F9EB1D] text-[#881E80] px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                                className="inline-flex items-center justify-center gap-2 bg-[#F9EB1D] text-[#881E80] px-6 py-3 rounded-full font-bold text-base shadow-lg hover:shadow-xl transition-all duration-300"
                             >
                                 <FileText className="w-5 h-5" />
-                                Llenar Formulario de Admisión
+                                Admisiones
                             </motion.button>
                         </a>
                     </div>
