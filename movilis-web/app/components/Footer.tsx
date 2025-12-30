@@ -92,8 +92,8 @@ export default function Footer() {
             {/* Columna 1: Identidad */}
             <div
               className={`flex flex-col space-y-4 md:pr-8 lg:pr-12 transition-all duration-900 ease-out ${isFooterVisible
-                  ? 'opacity-100 translate-y-0 scale-100'
-                  : 'opacity-0 translate-y-[50px] scale-95'
+                ? 'opacity-100 translate-y-0 scale-100'
+                : 'opacity-0 translate-y-[50px] scale-95'
                 }`}
               style={{ transitionDelay: '0ms' }}
             >
@@ -112,7 +112,7 @@ export default function Footer() {
                   <h4 className="text-sm font-semibold text-[#F9EB1D]">Llámanos</h4>
                   <div className="flex items-center gap-2">
                     <Phone className="h-4 w-4 text-[#F9EB1D]" />
-                    <span>593 99 130 3196</span>
+                    <span>+593 99 130 3196</span>
                   </div>
                 </div>
                 {/* Escríbenos */}
@@ -134,8 +134,8 @@ export default function Footer() {
             {/* Columna 2: Enlaces Institucionales */}
             <div
               className={`flex flex-col space-y-4 md:px-8 lg:px-12 transition-all duration-900 ease-out ${isFooterVisible
-                  ? 'opacity-100 translate-y-0 scale-100'
-                  : 'opacity-0 translate-y-[50px] scale-95'
+                ? 'opacity-100 translate-y-0 scale-100'
+                : 'opacity-0 translate-y-[50px] scale-95'
                 }`}
               style={{ transitionDelay: '200ms' }}
             >
@@ -179,8 +179,8 @@ export default function Footer() {
             {/* Columna 3: Conecta */}
             <div
               className={`flex flex-col space-y-4 md:pl-8 lg:pl-12 transition-all duration-900 ease-out ${isFooterVisible
-                  ? 'opacity-100 translate-y-0 scale-100'
-                  : 'opacity-0 translate-y-[50px] scale-95'
+                ? 'opacity-100 translate-y-0 scale-100'
+                : 'opacity-0 translate-y-[50px] scale-95'
                 }`}
               style={{ transitionDelay: '400ms' }}
             >
@@ -270,8 +270,8 @@ export default function Footer() {
           {/* Copyright */}
           <div
             className={`mt-12 pt-8 border-t border-white/10 text-center text-sm font-light text-white/70 transition-all duration-900 ease-out ${isFooterVisible
-                ? 'opacity-100 translate-y-0 scale-100'
-                : 'opacity-0 translate-y-[50px] scale-95'
+              ? 'opacity-100 translate-y-0 scale-100'
+              : 'opacity-0 translate-y-[50px] scale-95'
               }`}
             style={{ transitionDelay: '600ms' }}
           >

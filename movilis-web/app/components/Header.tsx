@@ -80,15 +80,15 @@ const menuItems = [
     submenu: nosotrosSubmenu,
   },
   {
-    name: "Educación Continua",
-    href: "/educacion-continua",
-    hasDropdown: false,
-  },
-  {
     name: "Campus Virtual",
     href: "/campus-virtual",
     hasDropdown: true,
     submenu: campusVirtualSubmenu,
+  },
+  {
+    name: "Educación Continua",
+    href: "/educacion-continua",
+    hasDropdown: false,
   },
 ];
 
