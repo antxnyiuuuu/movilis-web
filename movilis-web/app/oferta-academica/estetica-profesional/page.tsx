@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Megaphone, Award, ArrowRight, BookOpen, X, CheckCircle, TrendingUp, Sparkles } from 'lucide-react';
+import { Sparkles, Award, ArrowRight, BookOpen, X, CheckCircle, Scissors, Heart } from 'lucide-react';
 
-export default function MarketingComunicacionPage() {
+export default function EsteticaProfesionalPage() {
     const [showDiploma, setShowDiploma] = useState(true);
     const [showContinueButton, setShowContinueButton] = useState(false);
 
@@ -54,14 +54,14 @@ export default function MarketingComunicacionPage() {
 
                             {/* Contenido del Diploma */}
                             <div className="text-center relative z-10">
-                                {/* Icono de Marketing */}
+                                {/* Icono de Estética */}
                                 <motion.div
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
                                     transition={{ delay: 0.3, type: "spring" }}
                                     className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#881E80] to-[#9a2d8f] rounded-full mb-6 shadow-lg"
                                 >
-                                    <Megaphone className="w-10 h-10 text-white" strokeWidth={2} />
+                                    <Sparkles className="w-10 h-10 text-white" strokeWidth={2} />
                                 </motion.div>
 
                                 {/* Título Principal */}
@@ -73,7 +73,7 @@ export default function MarketingComunicacionPage() {
                                 >
                                     Tecnología Superior en
                                     <br />
-                                    Marketing y Comunicación Estratégica
+                                    Estética Profesional
                                 </motion.h1>
 
                                 {/* Línea decorativa */}
@@ -97,7 +97,7 @@ export default function MarketingComunicacionPage() {
                                     <p className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
                                         Tecnólogo/a Superior en
                                         <br />
-                                        Marketing Digital y Comunicación Estratégica
+                                        Estética Profesional
                                     </p>
 
                                     {/* Código Legal */}
@@ -107,7 +107,7 @@ export default function MarketingComunicacionPage() {
                                             href="#"
                                             className="text-sm font-semibold text-[#881E80] hover:text-[#9a2d8f] transition-colors"
                                         >
-                                            RPC-SO-52-No.813-2024
+                                            RPC-SO-16-No.218-2025
                                         </a>
                                     </div>
                                 </motion.div>
@@ -178,14 +178,14 @@ export default function MarketingComunicacionPage() {
 
                 {/* Contenido Principal */}
                 <div className="relative z-10 max-w-xl text-center lg:text-left">
-                    {/* Icono Marketing */}
+                    {/* Icono Estética */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6 }}
                         className="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-[#881E80] to-[#5a1050] rounded-3xl shadow-2xl mb-8 mx-auto lg:mx-0 group-hover:shadow-3xl group-hover:scale-105 transition-all duration-300"
                     >
-                        <TrendingUp className="w-12 h-12 md:w-16 md:h-16 text-white" strokeWidth={1.5} />
+                        <Heart className="w-12 h-12 md:w-16 md:h-16 text-white" strokeWidth={1.5} />
                     </motion.div>
 
                     {/* Título */}
@@ -205,7 +205,7 @@ export default function MarketingComunicacionPage() {
                         transition={{ delay: 0.4, duration: 0.6 }}
                         className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
                     >
-                        Domina las estrategias digitales, comunicación efectiva y análisis de mercado para impulsar marcas al éxito.
+                        Conviértete en un profesional de la estética, dominando técnicas avanzadas de cuidado personal, belleza y bienestar integral.
                     </motion.p>
 
                     {/* Botón CTA */}
@@ -214,7 +214,7 @@ export default function MarketingComunicacionPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.6 }}
                     >
-                        <Link href="/oferta-academica/marketing-comunicacion/regular">
+                        <Link href="/oferta-academica/estetica-profesional/regular">
                             <motion.button
                                 whileHover={{ scale: 1.05, x: 5 }}
                                 whileTap={{ scale: 0.95 }}
@@ -239,7 +239,7 @@ export default function MarketingComunicacionPage() {
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-[#F9EB1D] rounded-full"></div>
-                            <span className="font-bold text-[#881E80]">Modalidad Presencial</span>
+                            <span className="font-bold text-[#881E80]">Modalidad Híbrida</span>
                         </div>
                     </motion.div>
                 </div>
@@ -275,14 +275,14 @@ export default function MarketingComunicacionPage() {
 
                 {/* Contenido Principal */}
                 <div className="relative z-10 max-w-xl text-center lg:text-left">
-                    {/* Icono Award */}
+                    {/* Icono Scissors */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6 }}
                         className="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 bg-[#F9EB1D] rounded-3xl shadow-2xl mb-8 mx-auto lg:mx-0 group-hover:shadow-3xl group-hover:scale-105 transition-all duration-300"
                     >
-                        <Award className="w-12 h-12 md:w-16 md:h-16 text-[#881E80]" strokeWidth={1.5} />
+                        <Scissors className="w-12 h-12 md:w-16 md:h-16 text-[#881E80]" strokeWidth={1.5} />
                     </motion.div>
 
                     {/* Título */}
@@ -292,7 +292,7 @@ export default function MarketingComunicacionPage() {
                         transition={{ delay: 0.3, duration: 0.6 }}
                         className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight"
                     >
-                        Valida tus conocimientos
+                        Tu título de 3er nivel en 8 meses
                     </motion.h1>
 
                     {/* Subtítulo Específico */}
@@ -302,7 +302,7 @@ export default function MarketingComunicacionPage() {
                         transition={{ delay: 0.4, duration: 0.6 }}
                         className="text-2xl md:text-3xl font-bold text-[#F9EB1D] mb-6"
                     >
-                        Tu título de 3er nivel en 8 meses
+                        Programa de Validación de conocimientos
                     </motion.p>
 
                     {/* Descripción */}
@@ -312,7 +312,7 @@ export default function MarketingComunicacionPage() {
                         transition={{ delay: 0.45, duration: 0.6 }}
                         className="text-lg md:text-xl text-white/90 mb-6 leading-relaxed"
                     >
-                        Programa de Validación de conocimientos para profesionales del marketing y comunicación.
+                        Valida tu experiencia profesional en estética y obtén tu título oficial en tiempo récord.
                     </motion.p>
 
                     {/* Detalle Legal */}
@@ -322,10 +322,7 @@ export default function MarketingComunicacionPage() {
                         transition={{ delay: 0.5, duration: 0.6 }}
                         className="text-sm text-white/60 mb-8"
                     >
-                        Normativa RRA -{' '}
-                        <span className="underline hover:text-[#F9EB1D] transition-colors duration-300 cursor-pointer">
-                            Validación por experiencia
-                        </span>
+                        (Colocar texto normativa Jimmy)
                     </motion.p>
 
                     {/* Botón CTA */}
@@ -334,7 +331,7 @@ export default function MarketingComunicacionPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.6, duration: 0.6 }}
                     >
-                        <Link href="/oferta-academica/marketing-comunicacion/validacion">
+                        <Link href="/oferta-academica/estetica-profesional/validacion">
                             <motion.button
                                 whileHover={{ scale: 1.05, x: 5 }}
                                 whileTap={{ scale: 0.95 }}
